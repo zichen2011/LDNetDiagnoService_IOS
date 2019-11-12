@@ -44,6 +44,8 @@
 @property (nonatomic, weak, readwrite)
     id<LDNetDiagnoServiceDelegate> delegate;      //向调用者输出诊断信息接口
 @property (nonatomic, retain) NSString *dormain;  //接口域名
+@property (nonatomic, strong) NSString *kPingOpenServerIP;
+
 
 /**
  * 初始化网络诊断服务

@@ -15,7 +15,7 @@
 #import "LDNetTimer.h"
 #import "LDNetConnect.h"
 
-static NSString *const kPingOpenServerIP = @"";
+//static NSString *const kPingOpenServerIP = @"";
 static NSString *const kCheckOutIPURL = @"";
 
 @interface LDNetDiagnoService () <LDNetPingDelegate, LDNetTraceRouteDelegate,
@@ -343,7 +343,7 @@ static NSString *const kCheckOutIPURL = @"";
 
     //不管服务器解析DNS是否可达，均需要ping指定ip地址
     if([_localIp rangeOfString:@":"].location == NSNotFound){
-        [pingAdd addObject:kPingOpenServerIP];
+        [pingAdd addObject:self.kPingOpenServerIP];
         [pingInfo addObject:@"开放服务器"];
     }
 
@@ -354,7 +354,7 @@ static NSString *const kCheckOutIPURL = @"";
         [self recordStepInfo:[NSString stringWithFormat:@"ping: %@ %@ ...",
                                                         [pingInfo objectAtIndex:i],
                                                         [pingAdd objectAtIndex:i]]];
-        if ([[pingAdd objectAtIndex:i] isEqualToString:kPingOpenServerIP]) {
+        if ([[pingAdd objectAtIndex:i] isEqualToString:self.kPingOpenServerIP]) {
             [_netPinger runWithHostName:[pingAdd objectAtIndex:i] normalPing:YES];
         } else {
             [_netPinger runWithHostName:[pingAdd objectAtIndex:i] normalPing:YES];
